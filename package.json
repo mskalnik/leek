@@ -1,0 +1,28 @@
+{
+  "name": "leek",
+  "version": "0.1.0",
+  "description": "Discord bot, personal project made for testing discord.js",
+  "main": "src/index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mskalnik/leek.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Marino Skalnik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mskalnik/leek/issues"
+  },
+  "homepage": "https://github.com/mskalnik/leek#readme",
+  "dependencies": {
+    "discord.js": "13.8.1",
+    "dotenv": "16.0.1"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  }
+}
