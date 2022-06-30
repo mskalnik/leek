@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "Discord bot, personal project made for testing discord.js",
   "main": "src/index.js",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mskalnik/leek.git"
@@ -19,10 +18,15 @@
   },
   "homepage": "https://github.com/mskalnik/leek#readme",
   "dependencies": {
+    "@discordjs/rest": "0.5.0",
     "discord.js": "13.8.1",
-    "dotenv": "16.0.1"
+    "dotenv": "16.0.1",
+    "ts-node": "10.8.1"
+  },
+  "devDependencies": {
+    "typescript": "4.7.4"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "ts-node src/index.ts"
   }
 }
