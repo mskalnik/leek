@@ -6,7 +6,7 @@ export class Bot {
     config();
   }
 
-  public async start() {;
+  public async start() {
     this.client.once('ready', () => {
       console.log(`[INFO] ${this.client.user?.username} started...`);
     });
@@ -24,6 +24,7 @@ export class Bot {
 
     if (parserMessage.includes(pun)) {
       const results = parserMessage.split(pun).filter(Boolean);
+
       for (const result of results) {
         message.reply(`Hi ${result}`);
       }
