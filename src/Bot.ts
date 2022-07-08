@@ -1,24 +1,32 @@
-import { Client, Intents } from "discord.js";
+import { Client, Message } from "discord.js";
 import { config } from "dotenv";
 
 export class Bot {
-  constructor() {
+  constructor(protected client: Client) {
     config();
   }
 
-  public start() {
-    const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-
-    client.once('ready', () => {
-      console.log('[INFO] Client started...');
+  public async start() {;
+    this.client.once('ready', () => {
+      console.log(`[INFO] ${this.client.user?.username} started...`);
     });
 
-    client.on('interactionCreate', async (interaction) => {
-      if (!interaction.isCommand()) {
-        return;
+    this.client.on('messageCreate', async (message: Message) => {
+      this.joke(message);
+    });
+
+    this.client.login(process.env.TOKEN);
+  }
+
+  private joke(message: Message) {
+    const parserMessage = message.content.toLocaleLowerCase();
+    const pun = `i'm`;
+
+    if (parserMessage.includes(pun)) {
+      const results = parserMessage.split(pun).filter(Boolean);
+      for (const result of results) {
+        message.reply(`Hi ${result}`);
       }
-    });
-
-    client.login(process.env.TOKEN);
+    }
   }
 }
