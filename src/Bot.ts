@@ -1,5 +1,5 @@
-import { Client, Message } from "discord.js";
-import { config } from "dotenv";
+import { Client, Message } from 'discord.js';
+import { config } from 'dotenv';
 
 export class Bot {
   constructor(protected client: Client) {
@@ -23,11 +23,11 @@ export class Bot {
     const pun = `i'm`;
 
     if (parserMessage.includes(pun)) {
-      const results = parserMessage.split(pun).filter(Boolean);
-
-      for (const result of results) {
-        message.reply(`Hi ${result}`);
-      }
+      parserMessage
+        .split(pun)
+        .filter(Boolean)
+        .map((it) => message.reply(`Hi ${it}`))
+        ;
     }
   }
 }
