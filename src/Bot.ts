@@ -26,8 +26,7 @@ export class Bot {
       parserMessage
         .split(pun)
         .filter(Boolean)
-        .map((it) => message.reply(`Hi ${it}`))
-        ;
+        .map((it) => message.reply(`Hi ${it}`));
     }
   }
 }
