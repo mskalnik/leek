@@ -1,10 +1,16 @@
-import { Client, Intents } from 'discord.js';
+import { Client, GatewayIntentBits } from 'discord.js';
 import { Bot } from './Bot';
 
-const bot = new Bot(
-  new Client({
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
-  })
-);
+(async () => {
+  const bot = new Bot(
+    new Client({
+      intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+      ],
+    })
+  );
 
-bot.start();
+  await bot.start();
+})();

@@ -8,14 +8,16 @@ export class Bot {
 
   public async start() {
     this.client.once('ready', () => {
-      console.log(`[INFO] ${this.client.user?.username} started...`);
+      const username = this.client.user?.username ?? 'UNKNOWN_USERNAME';
+      console.clear();
+      console.info(`[INFO] ${username} up and running`);
     });
 
     this.client.on('messageCreate', async (message: Message) => {
       this.joke(message);
     });
 
-    this.client.login(process.env.TOKEN);
+    await this.client.login(process.env.TOKEN);
   }
 
   private joke(message: Message) {
@@ -23,7 +25,7 @@ export class Bot {
     const pun = `i'm`;
 
     if (parserMessage.includes(pun)) {
-      parserMessage
+      return parserMessage
         .split(pun)
         .filter(Boolean)
         .map((it) => message.reply(`Hi ${it}`));
